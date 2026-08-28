@@ -58,6 +58,12 @@ events.out.tfevents*
 *.ckpt
 *.t7
 *.onnx
+*.safetensors
+*.bin
+*.h5
+*.hdf5
+*.keras
+*.pb
 *.npy
 *.npz
 

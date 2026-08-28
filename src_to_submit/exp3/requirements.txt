@@ -1,6 +1,0 @@
-numpy>=1.23
-torch>=2.0
-matplotlib>=3.7
-
-# Optional: enable tone constraints/metrics in prosody_utils.py
-pypinyin>=0.50
