@@ -94,7 +94,13 @@ def train_model(
     history_path: Path | None = None,
 ):
     criterion = nn.CrossEntropyLoss(ignore_index=pad_idx) if pad_idx is not None else nn.CrossEntropyLoss()
-    optimizer = optim.AdamW(model.parameters(), lr=lr, weight_decay=weight_decay)
+    optimizer = optim.AdamW(
+        model.parameters(),
+        lr=lr,
+        weight_decay=weight_decay,
+        betas=(0.9, 0.95),
+        eps=1e-8,
+    )
 
     amp_enabled = bool(use_amp and device.startswith("cuda"))
     scaler = torch.amp.GradScaler("cuda", enabled=amp_enabled)

@@ -14,13 +14,13 @@ pip install -r requirements.txt
 训练（示例参数）：
 
 ```bash
-python main.py --epochs 20 --batch_size 128 --patch 4 --lr 0.001 --image_size 32
+python main.py --epochs 100 --batch_size 128 --patch 4 --lr 0.001 --image_size 256
 ```
 
 训练后可视化（请使用与训练相同的参数）：
 
 ```bash
-python visualize_results.py --batch_size 128 --patch 4 --image_size 32
+python visualize_results.py --batch_size 128 --patch 4 --image_size 256
 ```
 
 注意事项：
@@ -34,3 +34,23 @@ python visualize_results.py --batch_size 128 --patch 4 --image_size 32
 - `checkpoint/*-ckpt.t7`: 最优模型权重
 - `visualizations/training_curve.png`: 训练曲线图
 - `visualizations/case_showcase.png`: 预测样例网格图
+
+## 预测与可视化
+
+首先运行预测：
+
+```bash
+python predict_results.py --batch_size 32 --patch 4 --image_size 64
+```
+
+然后运行可视化
+
+```bash
+python visualize_results.py --batch_size 32 --patch 4 --image_size 64
+```
+
+产生的输出：
+
+- `visualizations/predictions.pt`
+- `visualizations/class_judgment_heatmaps.png`
+- `visualizations/class_statistics_bar.png`

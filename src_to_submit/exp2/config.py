@@ -1,10 +1,8 @@
 NET = "vit"
 PATCH_SIZE = 4
-EPOCHS = 20
+EPOCHS = 100
 LR = 1e-3
-BATCH_SIZE = 128
-IMAGE_SIZE = 32
-USE_COSINE = False
+
 
 # Use project-level dataset directory: E:/hw/deep_learning/data
 DATA_ROOT = "../../data/"
@@ -18,3 +16,6 @@ LOSS_FN = "ce"
 WEIGHT_DECAY = 0.05
 MOMENTUM = 0.9
 LABEL_SMOOTHING = 0.0
+BATCH_SIZE = 32
+IMAGE_SIZE = 64
+USE_COSINE = False

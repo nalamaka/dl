@@ -22,14 +22,15 @@ class Config:
     pattern_cycle: int = 8
 
     # More conservative optimization defaults for stability.
-    lr: float = 1e-4
+    # Lower base LR + longer warmup reduce sudden loss spikes.
+    lr: float = 6e-5
     weight_decay: float = 0.01
     epochs: int = 30
     max_gen_len: int = 128
 
-    warmup_ratio: float = 0.08
+    warmup_ratio: float = 0.12
     min_lr_ratio: float = 0.1
-    max_grad_norm: float = 0.5
+    max_grad_norm: float = 0.3
     scheduler_type: str = "cosine"  # ["cosine", "linear", "none"]
     use_amp: bool = True
     log_interval: int = 200

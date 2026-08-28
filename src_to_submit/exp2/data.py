@@ -6,20 +6,24 @@ from config import DATA_ROOT, NUM_WORKERS
 
 
 def build_dataloader(batch_size, image_size, data_root=DATA_ROOT, num_workers=NUM_WORKERS):
+    # Keep crop size controlled by image_size while following the 224/256 validation convention.
+    valid_resize = int(round(image_size * 256 / 224))
+
     trans_train = transforms.Compose(
         [
-            transforms.Resize((image_size, image_size)),
+            transforms.RandomResizedCrop(image_size),
             transforms.RandomHorizontalFlip(),
             transforms.ToTensor(),
-            transforms.Normalize(mean=[0.4914, 0.4822, 0.4465], std=[0.2470, 0.2435, 0.2616]),
+            transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
         ]
     )
 
     trans_valid = transforms.Compose(
         [
-            transforms.Resize((image_size, image_size)),
+            transforms.Resize(valid_resize),
+            transforms.CenterCrop(image_size),
             transforms.ToTensor(),
-            transforms.Normalize(mean=[0.4914, 0.4822, 0.4465], std=[0.2470, 0.2435, 0.2616]),
+            transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
         ]
     )
 
